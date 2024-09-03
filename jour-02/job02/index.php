@@ -1,5 +1,5 @@
 <?php
-function find_one_student(string $email): array {
+function find_one_student(string $email) : array {
     $root = 'root';
 
     try {
