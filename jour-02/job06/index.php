@@ -1,5 +1,5 @@
 <?php
-function find_ordered_students() {
+function find_ordered_students() : array {
     $root = 'root';
     
     try {

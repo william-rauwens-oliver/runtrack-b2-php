@@ -1,5 +1,5 @@
 <?php
-function find_full_rooms() {
+function find_full_rooms() : array {
     $root = 'root';
 
     try {
