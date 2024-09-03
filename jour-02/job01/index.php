@@ -3,10 +3,10 @@ function find_all_students() : array {
     $root = 'root';
     
     try {
-        $dbh = new PDO('mysql:host=localhost;dbname=lp_official', $root, $root);
-        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo = new PDO('mysql:host=localhost;dbname=lp_official', $root, $root);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-        $stmt = $dbh->prepare("SELECT * FROM student");
+        $stmt = $pdo->prepare("SELECT * FROM student");
         $stmt->execute();
         
         $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
