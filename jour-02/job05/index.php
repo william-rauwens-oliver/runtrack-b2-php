@@ -23,7 +23,7 @@ function find_full_rooms() {
 
         $result = [];
         foreach ($rooms as $room) {
-            $is_full = $room['students_count'] >= $room['capacity'] ? 'Yes' : 'No';
+            $is_full = $room['students_count'] >= $room['capacity'] ? 'Oui' : 'Non';
             $result[] = [
                 'name' => $room['name'],
                 'capacity' => $room['capacity'],
