@@ -1,14 +1,12 @@
 <?php
-function find_all_students() {
-    $dsn = 'mysql:host=localhost;dbname=lp_official;charset=utf8';
-    $username = 'root';
-    $password = 'root';
+function find_all_students() : array {
+    $root = 'root';
     
     try {
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $dbh = new PDO('mysql:host=localhost;dbname=lp_official', $root, $root);
+        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-        $stmt = $pdo->prepare("SELECT * FROM student");
+        $stmt = $dbh->prepare("SELECT * FROM student");
         $stmt->execute();
         
         $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
