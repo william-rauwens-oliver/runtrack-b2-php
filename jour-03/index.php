@@ -1,30 +1,45 @@
 <?php
 require_once 'functions.php';
 
-$gradeId = 3;
+$floorId = 2;
 
-$grade = findOneGrade($gradeId);
+$floor = findOneFloor($floorId);
 
-if ($grade && $grade->getName()) {
-    echo "<h1>Étudiants de la promotion : " . htmlspecialchars($grade->getName()) . "</h1>";
+if ($floor && $floor->getName()) {
+    echo "<h1>Étage : " . htmlspecialchars($floor->getName()) . "</h1>";
 
-    $students = $grade->getStudents();
+    $rooms = $floor->getRooms();
 
-    if ($students) {
+    if ($rooms) {
         echo "<ul>";
-        foreach ($students as $student) {
+        foreach ($rooms as $room) {
             echo "<li>";
-            echo "Nom : " . htmlspecialchars($student['fullname']) . "<br>";
-            echo "Email : " . htmlspecialchars($student['email']) . "<br>";
-            echo "Date de naissance : " . htmlspecialchars($student['birthdate']) . "<br>";
-            echo "Genre : " . htmlspecialchars($student['gender']);
+            echo "Salle : " . htmlspecialchars($room['name']) . "<br>";
+
+            $roomObj = new Room(getPDO(), $room['id']);
+            $grades = $roomObj->getGrades();
+
+            echo "<pre>";
+            echo "</pre>";
+
+            if ($grades) {
+                echo "<ul>";
+                foreach ($grades as $grade) {
+                    echo "<li>";
+                    echo "Promotion : " . htmlspecialchars($grade['name']) . "<br>";
+                    echo "</li>";
+                }
+                echo "</ul>";
+            } else {
+                echo "<p>Aucune promotion trouvée pour cette salle.</p>";
+            }
             echo "</li>";
         }
         echo "</ul>";
     } else {
-        echo "<p>Aucun étudiant trouvé pour cette promotion.</p>";
+        echo "<p>Aucune salle trouvée pour cet étage.</p>";
     }
 } else {
-    echo "<p>Promotion non trouvée.</p>";
+    echo "<p>Étage non trouvé.</p>";
 }
 ?>
