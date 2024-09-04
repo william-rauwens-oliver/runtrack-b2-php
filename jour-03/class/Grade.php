@@ -31,8 +31,36 @@ class Grade {
         return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: null;
     }
 
+    public function getId(): ?int {
+        return $this->id;
+    }
+
+    public function setId(int $id): void {
+        $this->id = $id;
+    }
+
+    public function getRoomId(): ?int {
+        return $this->room_id;
+    }
+
+    public function setRoomId(int $room_id): void {
+        $this->room_id = $room_id;
+    }
+
     public function getName(): ?string {
         return $this->name;
+    }
+
+    public function setName(?string $name): void {
+        $this->name = $name;
+    }
+
+    public function getYear(): ?int {
+        return $this->year;
+    }
+
+    public function setYear(?int $year): void {
+        $this->year = $year;
     }
 }
 ?>

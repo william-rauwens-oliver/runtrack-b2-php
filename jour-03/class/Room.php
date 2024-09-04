@@ -32,11 +32,30 @@ class Room {
             echo "Erreur de requête SQL : " . $e->getMessage();
             return null;
         }
-    }    
+    }
+
+    public function getId(): ?int {
+        return $this->id;
+    }
+
+    public function setId(int $id): void {
+        $this->id = $id;
+    }
 
     public function getName(): ?string {
         return $this->name;
     }
-}
 
+    public function setName(?string $name): void {
+        $this->name = $name;
+    }
+
+    public function getFloorId(): ?int {
+        return $this->floor_id;
+    }
+
+    public function setFloorId(int $floor_id): void {
+        $this->floor_id = $floor_id;
+    }
+}
 ?>
